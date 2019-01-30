@@ -141,3 +141,42 @@
     padding: 0 1em 0 1em;
   }
 }
+/* ========================== TRANSLATION =================================== */
+/* https://www.flag-sprites.com/ select flags, check network tab for image */
+.volt-select-language {
+  margin-left: 1em;
+}
+.vote-select-language .mdl-menu__container {
+  background: #fff;
+}
+.volt-lang {
+  background: url(img/flags.min.png) no-repeat;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: .5em;
+  left: .25em;
+  display: block;
+}
+
+.volt-lang_en {
+  background-position: -32px -64px;
+}
+.volt-lang_pl {
+  background-position: -160px -128px;
+}
+.volt-lang_de {
+  background-position: -64px -32px;
+}
+.volt-lang_fr {
+  background-position: 0 -64px;
+}
+.volt-lang_it {
+  background-position: 0 -96px;
+}
+.volt-lang_es {
+  background-position: -160px -32px
+}
+.volt-lang_dk {
+  background-position: -96px -32px;
+}
