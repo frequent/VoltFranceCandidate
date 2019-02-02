@@ -202,6 +202,9 @@
   }
 }
 /* ====================== Text Content ====================================== */
+.volt-toc {
+  list-style: none;
+}
 .volt-text {
   font-family: "Ubuntu";
   color: #ffffff;
