@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="gadget_candidature.css" />
 
     <script src="lib/material_design_lite.1.3.0.min.js"></script>
+    <script src="lib/youtube_iframe_api.min.js"></script>
 
     <script src="rsvp.latest.min.js"></script>
     <script src="renderjs.latest.min.js"></script>
@@ -58,11 +59,294 @@
         </div>
       </header>
       <main class="volt-page-content mdl-layout__content">
-      
+        <div class="volt-player-content">
+          <div class="mdl-grid">
+            <div class="volt-player-container mdl-cell mdl-cell--12-col">
+              <div id="player"></div>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="volt-content-container mdl-cell mdl-cell--12-col">
+              <h1 class="volt-text volt-text-header" data-i18n="Welcome to the citizen">Bienvenue sur la page de candidature citoyenne de Volt France !</h1>
+              <h2 class="volt-text volt-text-subheader" data-i18n="What exactly is Volt">1. Volt, c'est quoi exactement ?</h2>
+              <p><a class="volt-text" href="https://www.voltfrance.org">www.volteuropa.org</a>&nbsp;<span data-i18n="is a political movement" class="volt-text">est un mouvement politique citoyen fondé à la suite du référendum sur le Brexit actif dans 32 pays - avec, à ce jour des partis politiques constitué dans 12 pays, dont la France.</span>&nbsp;<span class="volt-text volt-center" data-i18n="The idea of this call">L’objectif de cet appel à candidatures est de présenter une liste citoyenne véritablement représentative et démocratiquement choisie aux européennes 2019.</p>
+              <div class="volt-silhouette-wrapper">
+                <img src="img/FR-Graphics.Candidates.Silhouette.svg" class="volt-silhouette" data-i19n="Vote for your ideas" alt="Vote for your ideas" />
+                <h3 class="volt-text volt-text-subheader volt-header-call"><span class="volt-text volt-header-emphasis" data-i18n="Ready to get engaged for Europe">Prêt à vous engager pour l’Europe?</span>&nbsp;<a class="volt-text volt-header-link" href="#apply" data-i18n="Become a candidate">Voyez comment vous porter candidat !</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="volt-content-container mdl-cell mdl-cell--12-col">
+              <h2 class="volt-text volt-text-subheader" data-i18n="2. I need more info first">J'ai besoin d'un peu plus d'informations...</h2>
+              <p class="volt-text" data-i18n="Our politics are guided">Nos politiques sont cadrées par le respect des valeurs suivantes :</p>
+              <ul class="volt-text-list">
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Human Dignity" class="volt-text-logo-wrapper volt-text volt-text-itemheader">Dignité Humaine</h3>
+                  <p data-i18n="We believe in the" class="volt-text">Nous croyons en l’inaltérable dignité de l’être humain. Ce respect et cette valorisation de chaque être humain est au coeur de notre conception politique. Nous croyons qu’aucun être humain n’est le même qu’un autre et que cette diversité enrichit notre société.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Equal Opportunities" class="volt-text-logo-wrapper volt-text volt-text-itemheader">Égalité</h3>
+                  <p class="volt-text" data-i18n="We believe in the right of">Nous croyons en le droit de chacun d’être capable de décider de son propre destin, quelles que soient leur origine ou leurs valeurs. Nous croyons que chaque être humain doit être en mesure de débloquer totalement leur potentiel selon leur propre définition, qui qu’ils soient. Nous croyons que chacun doit être capable de participer activement à la société.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Justice" class="volt-text-logo-wrapper volt-text volt-text-itemheader">Justice</h3>
+                  <p data-i18n="It is our understanding, that" class="volt-text">Par défaut, tout le monde est égal devant la loi, et les lois ne doivent pas viser des individus. Nous combattons toute forme de discrimination car nous pensons que chaque être humain doit être capable de dévoiler l’intégralité de son potentiel, peu importe qui ils sont. De plus, les citoyens doivent pouvoir croire en la fiabilité et en la justice de leur État.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Liberty" class="volt-text-logo-wrapper volt-text volt-text-itemheader">Liberté</h3>
+                  <p data-i18n="We believe that individuals" class="volt-text">Nous croyons que l’individu doit être libre de vivre sa liberté et d’exprimer sa personnalité, tant qu’elle n’empiète pas sur les droits d’un autre. La personne n’est pas seulement un citoyen, mais aussi un individu privé, qui doit être en mesure de vivre leur potentiel en dehors de la dimension politique. De plus, l’Etat doit toujours préférer informer les citoyens et leur permettre plutôt que les forcer.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Solidarity" class="volt-text-logo-wrapper volt-text volt-text-itemheader">Solidarité</h3>
+                  <p data-i18n="We are Europe and Europe is" class="volt-text">Nous sommes l'Europe et l'Europe est nous. Si nous comprenons que notre futur individuel est intrinsèquement lié à la destinée de tous les autres européens, nous pouvons pleinement comprendre que la solidarité est au fondement de notre société européenne. Nous croyons que la solidarité devrait guider nos actes individuels et collectifs, et par la même nos politiques. Aucun citoyen, aucune région, aucun pays ne doivent être laissés de côté.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Sustainability" class="volt-text-logo-wrapper volt-text volt-text-itemheader">Soutenabilité</h3>
+                  <p data-i18n="Our goal is to progress towards" class="volt-text">Notre objectif est de progresser vers un meilleur futur, ce qui explique pourquoi nous pensons que la soutenabilité est un élément-clé. Nos économies, notre comportement individuel, et l’administration de nos Etats doivent être construits durablement, en termes de nature, de finance, ou de n’importe quelles autres ressources communes.</p>
+                </li>
+              </ul>
+              <p class="volt-text" data-i18n="... and we work on">... et nous travaillons au niveaux Européen, nationaux et locaux dans les cinq et un défis suivants:</p>
+              <ul class="volt-text-list">
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/EU-Graphics.Challenge.Smart.State.png" alt="L'État Intelligent" />
+                  </div>
+                  <h3 data-i18n="Smart State" class="volt-text volt-text-itemheader volt-text-itemheader-double">L'État Intelligent</h3>
+                  <p data-i18n="The Smart State must adopt" class="volt-text">Les “États intelligents” doivent adopter de nouveaux outils pour gagner la confiance de leurs citoyens à travers une gouvernance responsable, transparente et efficace. Nous investirons dans notre futur commun, comprenant des systèmes d’éducation innovants, un système de santé de qualité. Ensemble, nous utiliserons la technologie pour une prospérité commune.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/EU-Graphics.Challenge.Economic.Renaissance.png" alt="La Renaissance Economique" />
+                  </div>
+                  <h3 data-i18n="Economic Renaissance" class="volt-text volt-text-itemheader volt-text-itemheader-double">La Renaissance Economique</h3>
+                  <p data-i18n="The european economies" class="volt-text">Les économies européennes ont besoin de devenir le moteur du progrès de la société et permettre un niveau de vie décent pour chacun. Cela requiert des politiques pour réduire la bureaucratie, renforcer le marché du travail, raviver l’innovation dans nos économies, investir dans une productivité intelligente et durable et s’attaquer au chômage et créer un système social et fiscal européen plus unifié.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/EU-Graphics.Challenge.Social.Equality.png" alt="Égalité Sociale" />
+                  </div>
+                  <h3 data-i18n="Social Equality" class="volt-text volt-text-itemheader volt-text-itemheader-double">Égalité Sociale</h3>
+                  <p data-i18n="The citizens and residents" class="volt-text">Les citoyens et résidents de l’Union européenne doivent se voir garantir des droits et opportunités égaux, et les droits de l’Homme doivent être respectés et appliqués ! Pour s’assurer de cela, nous souhaitons introduire des politiques s’attaquant à tous les types d’inégalités et de discriminations, réduisant la pauvreté et fournissant un accès aux besoin fondamentaux. Plus important encore, personne ne doit être laissé de côté ! </p>
+                </li>
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/EU-Graphics.Challenge.Global.Balance.png" alt="Équilibre global" />
+                  </div>
+                  <h3 data-i18n="Global Balance" class="volt-text volt-text-itemheader volt-text-itemheader-double">Équilibre global</h3>
+                  <p data-i18n="Europe must assume responsibility" class="volt-text">L’Europe a besoin d’assumer la responsabilité pour son rôle dans les challenges globaux, en particulier ceux concernant le changement climatique, la sécurité alimentaire, la santé publique, la migration et les crise de réfugiés. Nous avons pour but de mener des actions afin d’éradiquer la pauvreté, générer des emplois, construire une économie circulaire, assurer un commerce juste, sécuriser des moyens de subsistance et construire des infrastructures pour un développement et une croissance durables.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/EU-Graphics.Challenge.Citizen.Empowerment.png" alt="Responsabilisation des citoyens" />
+                  </div>
+                  <h3 data-i18n="Citizen Empowerment" class="volt-text volt-text-itemheader volt-text-itemheader-double">Responsabilisation des citoyens</h3>
+                  <p data-i18n="This challenge tries to adress means for citizens" class="volt-text">Ce challenge montre à quel point les citoyens peuvent avoir une influence plus directe sur leur gouvernement, quel genre d’informations les gouvernements devraient publier et comment les citoyens peuvent être informés de manière optimale afin de participer à la vie démocratique. Cela signifie que nous recherchons les meilleures pratiques de participation citoyenne, la transparence, des moyens de structurer les médias publics et la sauvegarde de notre vie privée.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/EU-Graphics.Challenge.Eu.Reform.png" alt="Réforme de l’UE" />
+                  </div>
+                  <h3 data-i18n="EU-Reform" class="volt-text volt-text-itemheader volt-text-itemheader-double">Réforme de l’UE</h3>
+                  <p data-i18n="The European project" class="volt-text">Le projet européen a permis 70 ans de paix et de stabilité sur notre continent. Toutefois, l’UE a été secouée par des crises et la montée de l'euroscepticisme. Afin de nous baser sur ses réalisations précédentes, l’équipe de réforme de l’UE développe (1) des manières d’améliorer la gouvernance de l’UE en proposant une trajectoire des réformes institutionnelles claires vers une Union européenne fédérale, et (2) des propositions concrètes pour tous les domaines politiques.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="volt-content-container mdl-cell mdl-cell--12-col">
+              <h2 class="volt-text volt-text-subheader" data-i18n="Do you already have a programme">3. Y-a-t-il déjà un programme ?</h2>
+              <p class="volt-text" data-i18n="Yes of course ! Our programme">Oui ! Notre programme, la Déclaration d'Amsterdam, a été construit de façon collaborative par tous nos membres. Il été adopté lors de notre Assemblée Générale à Amsterdam et est construit autour de trois axes:</p>
+              <ul class="volt-text-list">
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Build a just and sustainable society" class="volt-text-itemheader-double volt-text volt-text-itemheader volt-emphasis">1. Bâtir une société juste et responsable</h3>
+                  <p data-i18n="In creating the ecologic" class="volt-text">En mettant en oeuvre la transition écologique, en gérant l’immigration de façon responsable et avec humanité, et en oeuvrant pour l’équité et l’égalité.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Make Europe an economic powerhouse" class="volt-text-itemheader-double volt-text volt-text-itemheader volt-emphasis">2. Faire de l’Europe un moteur économique</h3>
+                  <p data-i18n="By stimulating growth" class="volt-text">En stimulant la croissance et en améliorant le niveau de vie, en investissant dans l’avenir, et en accordant la priorité à l’éducation.</p>
+                </li>
+                <li class="volt-text-list-item">
+                  <h3 data-i18n="Fix the EU" class="volt-text-itemheader-double volt-text volt-text-itemheader volt-emphasis">3. Rénover l’Europe</h3>
+                  <p data-i18n="By creating a strong political union" class="volt-text">En créant une union politique forte, en augmentant le pouvoir d’agir de ses citoyens, et en augmentant la sécurité et la responsabilisation.</p>
+                </li>
+              </ul>
+              <br/>
+              <p class="volt-enforce-line-height">
+                <span data-i18n="Download" class="volt-text">Téléchargez</span>&nbsp;
+                <a target="_blank" class="volt-text volt-link" href="resources/EU-Policy.Amsterdam.Declaration.FR.pdf" data-i18n="the Amsterdam Declaration">la Déclaration d'Amsterdam</a>&nbsp;
+                <span class="volt-text" data-i18n="here">ici.</span>&nbsp;
+                <span class="volt-text" data-i18n="For more information concerning motivations">Pour plus d'information concernant le raisonnement, les mesures proposées et leurs financéments,</span>&nbsp;
+                <a target="_blank" class="volt-text volt-link" href="resources/EU-Policy.Amsterdam.Declaration.Supporting.Document.EN.pdf" data-i18n="a more detailed document">un document détaillé</a>&nbsp;
+                <span data-i18n="currently in English" class="volt-text">(en anglais pour le moment) vous éclairera. La rédaction des volets de notre programme est ouverte à tous nos membres donc rejoignez-nous et faites entendre votre voix !</span>
+              </p>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="volt-content-container mdl-cell mdl-cell--12-col">
+              <h2 data-i18n="How can I apply as candidate" class="volt-text volt-text-subheader">4. Comment se porter candidat ?</h2>
+              
+              <p class="volt-text" data-i18n="You have two options:">Il y a deux options:</p>
+              <ul class="volt-text-list-double">
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img id="apply" class="volt-text-image" src="img/FR-Graphics.Candidates.Profiles.svg" alt="Candidats" />
+                  </div>
+                  <h3 class="volt-text volt-text-itemheader" data-i18n="1. Actual Candidate">1. Candidat</h3>
+                  <br/>
+                  <p><span class="volt-text" data-i18n="Directly support our campaign as candidate">Aidez directement notre campagne comme candidats pour les élections européenes et contribuez à la démocratisation de l'Uion Européenne. Vous soyez placé(e) dans la liste sur la base d'un vote democratique entre les membres. Pour se porter candidats il suffit de completer le formulaire suivant et y envoyer avec les documents ci-dessous:</span>&nbsp;
+                  <p><span class="volt-text" data-i18n="Documents shared with members">1. Documents communiqués aux membres de Volt France et qui leurs serviront de base pour voter</span>&nbsp;<span class="volt-text">(<a class="volt-text-inline" href="https://volt.team/join" target="_blank" data-i18n="Join us on volt.team">rejoignez-nous sur volt.team</a>):</span></p>
+                  <ul class="volt-child-list volt-text-inline">
+                    <li class="volt-text" data-i18n="a candidate letter">une lettre de candidature (expliquant les raisons de votre candidature et ce que vous pensez pouvoir apporter à la campagne)</li>
+                    <li class="volt-text" data-i18n="a resume">un CV</li>
+                  </ul>
+                  <p class="volt-text" data-i18n="Declarations that will only be submitted to">2. Documents à titre informatif uniquement communiqués au comité électoral de Volt France</p>
+                  <ul class="volt-child-list volt-text-inline">
+                    <li><span class="volt-text" data-i18n="Membership declaration">Déclaration sur l’honneur de devenir membre de Volt France et de défendre le programme de Volt durant la campagne si vous êtes choisis comme candidat</span>&nbsp;(<a class="volt-text" href="" data-i18n="template">document modèle</a>)</li>
+                    <li><span class="volt-text" data-i18n="Affiliation declaration">Déclaration d'affiliation avec un précédent parti ou mouvement politique</span>&nbsp;(<a class="volt-text" href="" data-i18n="template">document modèle</a>)</li>
+                    <li><span class="volt-text" data-i18n="Condamnation declaration">Déclaration de toute condamnation judiciaire ou procédure en cours</span>&nbsp;(<a class="volt-text" href="" data-i18n="template">document modèle</a>)</li>
+                  </ul>
+                  
+                  <form name="volt-candidature" action="candidatures@voltfrance.org" class="volt-candidate-form">
+                    <div class="volt-candidate-form-wrapper">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input required class="mdl-textfield__input" name="candidate_first_name" type="text" id="candidate-first-name">
+                        <label class="volt-label mdl-textfield__label" for="candidte-first-name" data-i18n="First Name">Prenom</label>
+                      </div>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input required class="mdl-textfield__input" name="candidate_last_name" type="text" id="candidate-last-name">
+                        <label class="volt-label mdl-textfield__label" for="candidte-last-name" data-i18n="Last Name">Nom</label>
+                      </div>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input required class="mdl-textfield__input" name="candidate_age" type="number" id="candidate-age">
+                        <label class="volt-label mdl-textfield__label" for="candidte-age" data-i18n="Age">Age</label>
+                      </div>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input required class="mdl-textfield__input" name="candidate_postal_code" type="number" id="candidate-postal-code">
+                        <label class="volt-label mdl-textfield__label" for="candidte-postal-code" data-i18n="Postal Code">Code postal de résidence</label>
+                      </div>
+                      <label class="volt-checkbox-expander-l mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-candidate">
+                        <input type="checkbox" id="checkbox-candidate" name="checkbox_candidate" class="mdl-checkbox__input" checked>
+                        <span class="volt-text mdl-checkbox__label" data-i18n="Do you want to be candidate">Souhaitez vous être candidat à une position éligible</span>
+                      </label>
+                      <label class="volt-checkbox-expander-xl mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-validity">
+                        <input required type="checkbox" id="checkbox-validity" name="checkbox_validity" class="mdl-checkbox__input" checked>
+                        <span class="volt-text mdl-checkbox__label" data-i18n="I certify by my honor">Je certifie sur l'honneur que l'ensemble des informations fournies sont exactes et être légalement à même d'être candidat aux européennes</span>
+                      </label>
+                      <button type="submit" class="volt-submit-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        <span class="volt-text volt-submit-context" data-i18n="I want to be candidate">Je souhaites être candidat !</span>
+                        <span class="volt-text volt-submit-addon" data-i18n="(opens email editor)">(ouvre l'editor d'email)</span>  
+                      </button>
+                    </div>
+                  </form>
+                </li>
+                <li class="volt-text-list-item">
+                  <div class="volt-text-image-wrapper">
+                    <img class="volt-text-image" src="img/FR-Graphics.Candidates.Speakers.svg" alt="Amplificateur" />
+                  </div>
+                  <h3 class="volt-text volt-text-itemheader" data-i18n="2. Supporting Candidate">2. Candidat amplificateur</h3>
+                  <br/>
+                  <p><span class="volt-text" data-i18n="You are well known and care for Europe">Vous êtes connue, aimez l'Europe et nos idées ? Répresentez nous et partager les besoin d'un répresentation de citoyennete. Vous soyez placé(e) au fin du liste. Candidats en théorie, amplificateur des nos voeux en practique ! Pour se porter, envoyer un message à</span>&nbsp;<a class="volt-text" href="mailto=candidatures@voltfrance.org?subject=Amplificateur">candidatures@voltfrance.org</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mdl-grid">
+          <div class="volt-content-container mdl-cell mdl-cell--12-col">
+            <h2 data-i18n="Spread the word" class="volt-text volt-text-subheader">5. Porter la bonne parole</h2>
+            <p class="volt-text volt-share-align" data-i18n="Know someone who might be interested">Spread the word, so others can apply, too:</p>
+            <div class="volt-share-wrapper">
+              <form name="volt-share-facebook" class="volt-share-align">
+                <button type="submit" class="mdl-button volt-share-button">
+                  <i class="fab fa-facebook"></i>
+                </button>
+              </form>
+              <form name="volt-share-twitter" class="volt-share-align">
+                <button type="submit" class="mdl-button volt-share-button">
+                  <i class="fab fa-twitter"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="volt-newsreel">
+          <h4 class="volt-footer__header volt-newsreel__header" data-i18n="In the news:">Dans a presse:</h4>
+          <div class="volt-newsreel__content">
+            <div class="volt-newsreel__item" id="slide-1">
+              <a class="volt-newsreel__link" target="_blank" href="https://www.theguardian.com/commentisfree/2018/sep/05/shock-brexit-launch-erasmus-generation-volt">
+                <img class="volt-newsreel__image" src="img/FR-Graphics.Newsreel.Logo.Guardian.svg" alt="The Guardian" />
+              </a>
+            </div>
+            <div class="volt-newsreel__item" id="slide-2">
+              <a class="volt-newsreel__link" target="_blank" href="https://www.euractiv.com/section/eu-elections-2019/news/volt-the-transnational-party-that-aims-to-take-over-europe/">
+                <img class="volt-newsreel__image" src="img/FR-Graphics.Newsreel.Logo.Euractiv.svg" alt="Euractiv" />
+              </a>
+            </div>
+            <div class="volt-newsreel__item" id="slide-3">
+              <a class="volt-newsreel__link" target="_blank" href="https://www.economist.com/europe/2018/11/01/volt-wants-to-become-the-first-pan-eu-political-party">
+                <img class="volt-newsreel__image" src="img/FR-Graphics.Newsreel.Logo.Economist.svg" alt="The Economist" />
+              </a>
+            </div>
+            <div class="volt-newsreel__item" id="slide-4">
+              <a class="volt-newsreel__link" target="_blank" href="https://www.courrierinternational.com/article/europeennes-2019-volt-un-parti-neuf-de-jeunes-federalistes">
+                <img class="volt-newsreel__image" src="img/FR-Graphics.Newsreel.Logo.Courrier.International.svg" alt="Courrier Internationale" />
+              </a>
+            </div>
+
+          </div>
+          <a class="volt-newsreel__pointer" href="#slide-1"></a>
+          <a class="volt-newsreel__pointer" href="#slide-2"></a>
+          <a class="volt-newsreel__pointer" href="#slide-3"></a>
+          <a class="volt-newsreel__pointer" href="#slide-4"></a>
+        </div>
+        
+        <footer class="volt-footer">
+          <div class="volt-footer__top">
+            <h4 class="volt-footer__header" data-i18n="Follow Us">Follow us</h4>
+            <div class="volt-footer__floater">
+              <!--a class="volt-footer__social-media-link" href="https://www.volteuropa.org" href=""><i class="material-icons">rss_feed</i></a-->
+              <a class="volt-footer__social-media-link" href="https://www.facebook.com/VoltFR/"><i class="fab fa fa-facebook"></i></a>
+              <a class="volt-footer__social-media-link" href="https://twitter.com/volt_france"><i class="fab fa fa-twitter"></i></a>
+              <a class="volt-footer__social-media-link" href="https://www.instagram.com/volt_france/"><i class="fab fa fa-instagram"></i></a>
+              <a class="volt-footer__social-media-link" href="https://www.linkedin.com/company/voltfrance"><i class="fab fa fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="volt-footer__bottom">
+            <p class="volt-footer__bottom_content volt-credits">
+              <span class="">© 2019 - Volt France</span>&nbsp;
+              <span class="" data-i18n="© 2019 - Created by">© 2019 - Created by</span>&nbsp;
+              <a class="volt-credits-link" href="https://www.voltfrance.org" title="Volt France | Redonnons confiance en la politique"><img class="volt-publisher" src="img/volt.min.png" alt="Volt France" /></a>
+              <span class="">,</span>&nbsp;
+              <span class="" data-i18n="hosted by">hosted by</span>&nbsp;
+              <a class="volt-credits-link" href="https://github.com/VoltEuropa/">Github</a>
+              <span class="">.</span>
+              <span class="" data-i18n="Icon inspired by">Icon inspired by</span>&nbsp;
+              <a class="volt-credits-link" href="https://thenounproject.com/search/?q=people%20man%20woman&i=707544">Gregor Cresnar</a>,<a class="volt-credits-link" href="https://thenounproject.com/search/?q=speaker&i=580684">Hare Krishna</a> &nbsp;
+              <span class="" data-i18n="from">from</span>&nbsp;
+              <a class="volt-credits-link" href="https://nounproject.com/" title="Nounproject">the Nounproject</a>
+            </p>
+          </div>
+          <div class="volt-footer__action">
+            <img class="volt-action__banner-calendar" src="img/FR-Website.Calendar.Banner.min.png" data-i19n="src,footer-calendar-banner" alt="Save the Date" />
+          </div>
+        </footer>
       </main>
     </div>
+
     <div data-gadget-url="gadget_jio.html"
       data-gadget-scope="volt_jio"
+      data-gadget-sandbox="public">
+    </div>
+
+    <div data-gadget-url="gadget_jio.html"
+      data-gadget-scope="tube_jio"
+      data-gadget-sandbox="public">
+    </div>
+
+    <div data-gadget-url="gadget_jio.html"
+      data-gadget-scope="setting_jio"
       data-gadget-sandbox="public">
     </div>
 
