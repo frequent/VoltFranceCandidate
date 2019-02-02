@@ -289,6 +289,11 @@
     margin-bottom: 0;
   }
 }
+@media only screen and (max-width: 48em) {
+    .volt-text-itemheader-double {
+      height: 2.8em !important;
+    }
+}
 .volt-enforce-line-height {
   line-height: 1.4em;
 }
