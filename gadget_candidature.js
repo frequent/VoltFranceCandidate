@@ -11,11 +11,20 @@
   var KLASS = rJS(window);
   var CANVAS = "canvas";
   var ARR = [];
+  var CANDIDATURE = "candidature: ";
+  var MAIL = "candidatures@voltfrance.org";
   var BLANK = "_blank";
+  var SPACE = " ";
   var NAME = "name";
+  var BREAK = "\r\n";
   var VOLT = "volt_jio";
+  var TUBE = "tube_jio";
+  var HI = "hd720";
+  var LO = "tiny";
+  var INVALID = "is-invalid";
   var LOCATION = window.location;
   var DOCUMENT = window.document;
+  var SETTING = "setting_jio";
   var INTERSECTION_OBSERVER = window.IntersectionObserver;
   var TEMPLATE_PARSER = /\{([^{}]*)\}/g;
   var POPPER = "width=600,height=480,resizable=yes,scrollbars=yes,status=yes";
@@ -28,6 +37,7 @@
   /////////////////////////////
   // methods
   /////////////////////////////
+
   function getElem(my_element, my_selector) {
     return my_element.querySelector(my_selector);
   }
@@ -83,6 +93,10 @@
     };
   }
 
+  function getVideoHash() {
+    return "4v4WFV31Ha4";
+  }
+
   KLASS
 
     /////////////////////////////
@@ -104,7 +118,10 @@
         // yaya, should be localstorage caling repair to sync
         "url_dict": {},
         "content_dict": {},
-        "i18n_dict": {}
+        "i18n_dict": {},
+        "main": getElem(element, ".volt-player-content"),
+        "player_container": getElem(element, ".volt-player-container"),
+        "player": null
       };
     })
 
@@ -128,6 +145,15 @@
           return my_gadget[my_call](my_p1, my_p2, my_p3);
         });
     })
+    .declareMethod("tube_create", function (my_option_dict) {
+      return this.route(TUBE, "createJIO", my_option_dict);
+    })
+    .declareMethod("tube_allDocs", function (my_option_dict) {
+      return this.route(TUBE, "allDocs", my_option_dict);
+    })
+    .declareMethod("tube_get", function (my_id) {
+      return this.route(TUBE, "get", my_id);
+    })
     .declareMethod("volt_create", function (my_option_dict) {
       return this.route(VOLT, "createJIO", my_option_dict);
     })
@@ -137,10 +163,258 @@
     .declareMethod("volt_allDocs", function () {
       return this.route(VOLT, "allDocs");
     })
+    .declareMethod("setting_create", function (my_option_dict) {
+      return this.route(SETTING, "createJIO", my_option_dict);
+    })
+    .declareMethod("setting_getAttachment", function (my_id, my_tag, my_dict) {
+      return this.route(SETTING, "getAttachment", my_id, my_tag, my_dict);
+    })
+    .declareMethod("setting_putAttachment", function (my_id, my_tag, my_dict) {
+      return this.route(SETTING, "putAttachment", my_id, my_tag, my_dict);
+    })
+    .declareMethod("setting_removeAttachment", function (my_id, my_tag) {
+      return this.route(SETTING, "removeAttachment", my_id, my_tag);
+    })
+
+    // -------------------------- Video ----------------------------------------
+    .declareMethod("loadVideo", function (my_video_id) {
+      var gadget = this;
+      var dict = gadget.property_dict;
+      var tube_data = {"items": ARR};
+
+      if (!my_video_id) {
+        return;
+      }
+
+      if (!gadget.state.online) {
+        return RSVP.all([
+          gadget.resetFrube(true),
+          gadget.waitForNetwork(my_video_id)
+        ]);
+      }
+
+      return new RSVP.Queue()
+        .push(function () {
+          return gadget.getSetting("quality");
+        })
+        .push(function (quality) {
+          return gadget.stateChange({"quality": [LO, HI][quality + 0]});
+        })
+        .push(function () {
+          var player = dict.player;
+          var main = dict.main;
+
+          function handleReady(my_event) {
+            return my_event.target.playVideo();
+          }
+          function handleError(my_event) {
+            return gadget.handleError(my_event);
+          }
+          function handleStateChange() {
+            return gadget.videoOnStateChange();
+          }
+
+          if (!player || (player && !player.h)) {
+            while (true) {
+              try {
+                dict.player = new YT.Player("player", {
+                  "videoId": my_video_id,
+                  "width": main.clientWidth,
+                  "height": Math.max(main.clientWidth * 0.66 * 9 / 16, 250),
+                  "events": {
+                    "onReady": handleReady,
+                    "onStateChange": handleStateChange,
+                    "onError": handleError
+                  },
+                  "playerVars": {
+                    "showinfo": 0,
+                    "disablekb": 1,
+                    "iv_load_policy": 3,
+                    "rel": 0,
+                    "vq": gadget.state.quality,
+                    //"fs": 0
+                  }
+                });
+              break;
+            } catch (err) {
+              continue;
+            }
+          }
+
+          // let's see if this goes smoothly
+          } else if (player.loadVideoById) {
+            player.loadVideoById(my_video_id);
+          }
+          return;
+        })
+        .push(function () {
+          return gadget.tube_get(my_video_id);
+        })
+        .push(function (tube_response) {
+          tube_data = tube_response;
+        //  return gadget.frube_get(my_video_id);
+        //})
+        //.push(undefined, function (error) {
+        //  return gadget.handleError(error, {"404": {}});
+        //})
+        //.push(function (frube_response) {
+        //  var data = frube_response;
+          var state = gadget.state;
+          var item_list = tube_data.items || [{}];
+          var item = dict.current_video = mergeDict(item_list[0], /*data*/ {});
+          if (item) {
+            DOCUMENT.title = item.snippet.title;
+          }
+          return;
+        });
+    })
+
+    // -------------------------- Video ----------------------------------------
+    .declareMethod("getSetting", function (my_setting) {
+      var gadget = this;
+      return gadget.setting_getAttachment("/", my_setting, {format: "text"})
+        .push(function (response) {
+          var payload = JSON.parse(response);
+          if (getTimeStamp() - payload.timestamp > TEN_MINUTES) {
+            return gadget.setting_removeAttachment("/", "token");
+          }
+          return payload[my_setting];
+        })
+        .push(undefined, function (my_error) {
+          return gadget.handleError(my_error, {"404": 0});
+        });
+    })
+
+    .declareMethod("handleError", function (my_err, my_err_dict) {
+      var gadget = this;
+      var code;
+      var err = my_err.target ? JSON.parse(my_err.target.response).error : my_err;
+
+      if (err instanceof RSVP.CancellationError) {
+        gadget.state.is_searching = false;
+        return gadget.stateChange({"loader": null});
+      }
+
+      for (code in my_err_dict) {
+        if (my_err_dict.hasOwnProperty(code)) {
+          if ((err.status_code + STR) === code) {
+            return my_err_dict[code];
+          }
+        }
+      }
+      throw err;
+    })
+
+    .declareMethod("videoOnStateChange", function () {
+      var gadget = this;
+      var player = gadget.property_dict.player;
+      var current_state = player.getPlayerState();
+      var play_icon = getElem(gadget.element, ".frube-btn-play-pause i");
+      if (current_state === YT.PlayerState.ENDED) {
+        if (getElem(gadget.element, REPEAT).checked) {
+          player.seekTo(0, true);
+          player.playVideo();
+        } else {
+          play_icon.textContent = "play_arrow";
+          return gadget.jumpVideo(1);
+        }
+      } else if (current_state === YT.PlayerState.PLAYING) {
+        play_icon.textContent = "pause";
+      } else {
+        play_icon.textContent = "play_arrow";
+      }
+    })
+
+    .declareMethod("loadVideo", function (my_video_id) {
+      var gadget = this;
+      var dict = gadget.property_dict;
+      var tube_data = {"items": ARR};
+
+      if (!my_video_id) {
+        return;
+      }
+
+      return new RSVP.Queue()
+        .push(function () {
+          return gadget.getSetting("quality");
+        })
+        .push(function (quality) {
+          return gadget.stateChange({"quality": [LO, HI][quality + 0]});
+        })
+        .push(function () {
+          var player = dict.player;
+          var main = dict.main;
+
+          function handleReady(my_event) {
+            return my_event.target.playVideo();
+          }
+          function handleError(my_event) {
+            return gadget.handleError(my_event);
+          }
+          function handleStateChange() {
+            return gadget.videoOnStateChange();
+          }
+
+          if (!player || (player && !player.h)) {
+            while (true) {
+              try {
+                dict.player = new YT.Player("player", {
+                  "videoId": my_video_id,
+                  "width": main.clientWidth,
+                  "height": Math.max(main.clientWidth * 0.66 * 9 / 16, 250),
+                  "events": {
+                    "onReady": handleReady,
+                    "onStateChange": handleStateChange,
+                    "onError": handleError
+                  },
+                  "playerVars": {
+                    "showinfo": 0,
+                    "disablekb": 1,
+                    "iv_load_policy": 3,
+                    "rel": 0,
+                    "vq": gadget.state.quality,
+                    //"fs": 0
+                  }
+                });
+              break;
+            } catch (err) {
+              continue;
+            }
+          }
+
+          // let's see if this goes smoothly
+          } else if (player.loadVideoById) {
+            player.loadVideoById(my_video_id);
+          }
+          return;
+        })
+        .push(function () {
+          return gadget.tube_get(my_video_id);
+        })
+        .push(function (tube_response) {
+          tube_data = tube_response;
+        //  return gadget.frube_get(my_video_id);
+        //})
+        //.push(undefined, function (error) {
+        //  return gadget.handleError(error, {"404": {}});
+        //})
+        //.push(function (frube_response) {
+          //var data = frube_response;
+          var state = gadget.state;
+          var item_list = tube_data.items || [{}];
+          var item = dict.current_video = mergeDict(item_list[0], /* data */ {});
+          if (item) {
+            DOCUMENT.title = item.snippet.title;
+          }
+          return;
+        });
+    })
 
     .declareMethod("stateChange", function (delta) {
       var gadget = this;
       var state = gadget.state;
+      var dict = gadget.property_dict;
+      var promise_list = [];
   
       if (delta.hasOwnProperty("locale")) {
         state.locale = delta.locale;
@@ -153,7 +427,21 @@
           gadget.element.classList.add("volt-offline");
         }
       }
-      return;
+      if (delta.hasOwnProperty("play")) {
+        state.play = window.location.hash = delta.play || STR;
+        if (state.play && state.play === getVideoHash()) {
+          promise_list.push(gadget.loadVideo(state.play));
+        } else {
+          promise_list.push(gadget.resetFrube());
+        }
+      }
+      if (delta.hasOwnProperty("quality")) {
+        if (dict.player && delta.quality !== state.quality) {
+          dict.player.destroy();
+        }
+        state.quality = delta.quality;
+      }
+      return RSVP.all(promise_list);
     })
 
     // thx: https://css-tricks.com/simple-social-sharing-links/
@@ -176,7 +464,7 @@
         SOCIAL_MEDIA_CONFIG[my_scm].supplant({
           "url": window.encodeURIComponent(LOCATION.href),
           "text":"",
-          "tag_list": "VoteVolt,CandadatCitoyenne"
+          "tag_list": "VoteVolt,CandidatureCitoyenne"
         }),
         is_mobile.matches ? BLANK : STR,
         is_mobile.matches ? null : POPPER
@@ -247,6 +535,24 @@
         });
     })
 
+    .declareMethod("openMail", function (my_target) {
+      var subject;
+      var body;
+      subject = window.encodeURIComponent(
+        CANDIDATURE + SPACE + my_target.candidate_first_name.value + SPACE + my_target.candidate_last_name.value.toUpperCase()
+      );
+      body = window.encodeURIComponent(
+        "Nom: " + my_target.candidate_last_name.value.toUpperCase() + BREAK +
+        "Prenom: " + my_target.candidate_first_name.value + BREAK +
+        "Age: " + my_target.candidate_age.value + BREAK +
+        "Code Postal: " + my_target.candidate_postal_code.value + BREAK +
+        "Candidate éligible: " + my_target.checkbox_candidate.value + BREAK +
+        "Validité: " + my_target.checkbox_validity.value
+      );
+      window.open('mailto:' + MAIL + '?subject=' + subject + '&body=' + body, '_blank');
+      return;
+    })
+
     // -------------------.--- Render ------------------------------------------
     .declareMethod("render", function (my_option_dict) {
       var gadget = this;
@@ -256,30 +562,37 @@
       mergeDict(dict, my_option_dict);
       return new RSVP.Queue()
         .push(function () {
-          return gadget.volt_create(getConfig(gadget.state.locale));
+          return RSVP.all([ 
+            gadget.volt_create(getConfig(gadget.state.locale)),
+            gadget.tube_create({"type": "youtube", "api_key": dict.youtube_id}),
+            gadget.stateChange({"online": window.navigator.onLine}),
+            gadget.tataaaa()
+          ]);
         })
         .push(function () {
           return gadget.buildCalendarLookupDict();
         })
         .push(function () {
           return gadget.fetchTranslationAndUpdateDom(gadget.state.locale);
+        })
+        .push(function () {
+          return gadget.stateChange({play: getVideoHash()});
         });
     })
-
 
     /////////////////////////////
     // declared jobs
     /////////////////////////////
-
-    /////////////////////////////
-    // declared service
-    /////////////////////////////
-    .declareService(function () {
+    .declareJob("tataaaa", function () {
       var body = DOCUMENT.body;
       var seo = body.querySelector(".volt-seo-content");
       seo.parentElement.removeChild(seo);
       body.classList.remove("volt-splash");     
     })
+
+    /////////////////////////////
+    // declared service
+    /////////////////////////////
 
     /////////////////////////////
     // declared service
@@ -292,7 +605,7 @@
         return gadget.stateChange({"online": window.navigator.onLine});
       }
       return RSVP.all([
-        //gadget.installServiceWorker(),
+        gadget.setting_create({"type": "local", "sessiononly": false}),
         listener(window, "online", false, handleConnection),
         listener(window, "offline", false, handleConnection),
       ]);
@@ -304,6 +617,8 @@
 
     .onEvent("submit", function (event) {
       switch (event.target.getAttribute(NAME)) {
+        case "volt-candidature":
+          return this.openMail(event.target);
         case "volt-share-facebook":
           return this.shareUrl("facebook");
         case "volt-share-twitter":
