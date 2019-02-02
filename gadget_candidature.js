@@ -88,8 +88,8 @@
     return {
       "type": "volt_storage",
       "repo": "VoltFranceCandidate",
-      "path": "lang/" + my_language,
-      "__debug": "https://softinst103163.host.vifib.net/candid/lang/" + my_language + "/debug.json"
+      "path": "lang/" + my_language
+      //"__debug": "https://softinst103163.host.vifib.net/candid/lang/" + my_language + "/debug.json"
     };
   }
 
