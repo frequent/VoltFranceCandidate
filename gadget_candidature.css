@@ -448,6 +448,7 @@
   -ms-transform: rotate(-21deg);
   -o-transform: rotate(-21deg);
   transform: rotate(-21deg);
+  pointer-events: none;
 }
 @media only screen and (max-width: 48em) {
   .volt-candidate-form:before {
