@@ -112,6 +112,12 @@
 .fa-rss:before {
   content: "\f09e";
 }
+.fa-whatsapp:before {
+  content: "\f232";
+}
+.fa-envelope:before {
+    content: "\f0e0";
+}
 
 
 /* ============================= THEMEING =================================== */
@@ -202,26 +208,28 @@
   }
 }
 /* ====================== Text Content ====================================== */
-.volt-toc {
-  list-style: none;
-}
 .volt-text {
   font-family: "Ubuntu";
   color: #ffffff;
-  font-size: 1.15em;
-  line-height: 1.25em;
+  font-size: 1.35em;
+  line-height: 1.45em;
 }
-.volt-label,
+@media only screen and (max-width: 48em) {
+  .volt-text {
+    font-size: 1.15em;
+    line-height: 1.25em;
+  }
+}
 .volt-text-inline {
   font-family: "Ubuntu";
   color: #ffffff;
   font-size: 1em;
 }
 .volt-text-header {
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   margin-bottom: 1em;
-  margin-top: 0;
+  margin-top: 1em;
 }
 .volt-text-subheader {
   font-size: 2em;
@@ -229,20 +237,32 @@
   margin-bottom: 0.5em;
 }
 .volt-header-link {
-  font-size: 1em;
+  font-size: 2em;
   font-weight: bold;
 }
 .volt-header-emphasis {
-  font-size: 1em;
+  font-size: 2em;
   font-weight: bold;
+}
+@media only screen and (max-width: 48em) {
+  .volt-text-header {
+    font-size: 2em;
+    margin-top: 2em;
+  }
 }
 .volt-header-call {
   text-align: center;
   font-size: 1.5em;
 }
 .volt-content-container {
-  max-width: 70%;
+  max-width: 60%;
   margin: 0 auto;
+}
+@media only screen and (max-width: 80em) {
+  .volt-content-container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
 }
 .volt-text-itemheader {
   font-size: 1.4em;
@@ -436,12 +456,14 @@
 .volt-candidate-form {
   margin-top: 2em;
   margin-bottom: 2em;
+  text-align: center;
 }
 .volt-candidate-form:before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 24em;
+  width: 72%;
+  height: 12em;
+  background-color: #b19cd9;
   background-color: rgba(255, 255, 255, .3);
   -webkit-transform: rotate(-21deg);
   -moz-transform: rotate(-21deg);
@@ -449,13 +471,14 @@
   -o-transform: rotate(-21deg);
   transform: rotate(-21deg);
   pointer-events: none;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  margin-top: -3em;
 }
 @media only screen and (max-width: 48em) {
   .volt-candidate-form:before {
-    height: 24em;
-  }
-  .volt-candidate-form:after {
-    height: 24em;
+    height: 12em;
   }
 }
 .volt-candidate-form-wrapper {
@@ -498,7 +521,7 @@
 }
 .volt-submit-button {
   text-decoration: none;
-  margin-top: 3em;
+  margin-top: 1em;
   text-transform: none;
   height: 4em;
   line-height: 1.5em;
@@ -529,11 +552,60 @@
   font-size: 1.5em;
 }
 .volt-share-align {
-  padding-top: 1em;
-}
-.volt-share-align {
   display: inline-block;
   vertical-align: middle;
+}
+.volt-share-button {
+  color: #2C4251;
+  font-size: 1.5em;
+}
+.volt-share-align {
+  padding-top: 1em;
+  font-size: 1.5em;
+  margin: .5em 1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+.volt-share-align .btn {
+  color: #ffffff;
+}
+/* ================================== Icon List ============================= */
+.volt-icon-list {
+  list-style: none;
+  margin: 3em auto;
+  padding: 0;
+}
+.volt-icon-list-item {
+  display: inline-block;
+  height: 4em;
+  text-align: center;
+  padding: 0 1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 32em) {
+  .volt-icon-list-item {
+    display: block;
+    padding: 0;
+    margin: 2em auto 1em;
+    height: 8em;
+    width: 100%;
+  }
+}
+.volt-icon-list-link {
+  color: #ffffff;
+}
+.volt-icon-list-image {
+  width: auto;
+}
+/* ============================== SVG Container ============================= */
+.svg-container {
+  width: 100%;
+}
+.svg-container svg {
+  width: inherit;
+  height: auto;
 }
 /* ================================== Footer ================================ */
 .volt-footer {
@@ -682,7 +754,6 @@
 .volt-footer__floater {
   float: right;
   margin-top: -3em;
-  padding-right: 20vh;
 }
 .volt-footer__social-media-link {
   font-size: 1.5em;
@@ -812,7 +883,6 @@
 }
 .volt-newsreel {
   position: relative;
-  z-index: 1;
   padding: 2em 15% 2em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -825,7 +895,6 @@
   width: 100%;
   text-align: center;
   overflow: hidden;
-  z-index: -1;
 }
 @media (min-width: 54em) {
   .volt-newsreel {

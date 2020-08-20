@@ -12,7 +12,6 @@
   var CANVAS = "canvas";
   var ARR = [];
   var CANDIDATURE = "candidature: ";
-  var MAIL = "candidatures@voltfrance.org";
   var BLANK = "_blank";
   var SPACE = " ";
   var NAME = "name";
@@ -25,14 +24,9 @@
   var LOCATION = window.location;
   var DOCUMENT = window.document;
   var SETTING = "setting_jio";
-  var INTERSECTION_OBSERVER = window.IntersectionObserver;
   var TEMPLATE_PARSER = /\{([^{}]*)\}/g;
-  var POPPER = "width=600,height=480,resizable=yes,scrollbars=yes,status=yes";
   var LANG = "https://raw.githubusercontent.com/VoltEuropa/VoltFranceCandidate/master/lang/";
-  var SOCIAL_MEDIA_CONFIG = {
-    "facebook": "https://www.facebook.com/sharer.php?u={url}",
-    "twitter": "https://twitter.com/intent/tweet?url={url}&text={text}&hashtags={tag_list}"
-  };
+
 
   /////////////////////////////
   // methods
@@ -94,7 +88,7 @@
   }
 
   function getVideoHash() {
-    return "4v4WFV31Ha4";
+    return "xkP9gi_nQQ8";
   }
 
   KLASS
@@ -444,35 +438,6 @@
       return RSVP.all(promise_list);
     })
 
-    // thx: https://css-tricks.com/simple-social-sharing-links/
-    // twitter prevalidate url: https://cards-dev.twitter.com/validator
-    // https://developers.facebook.com/docs/sharing/best-practices/
-    .declareMethod("shareUrl", function (my_scm) {
-      var popup;
-      var is_mobile = window.matchMedia("only screen and (max-width: 48em)");
-      var popup_resolver;
-
-      // lots of bells and whistles for trying to stay on the page, use this
-      // with localstorage is we want to keep state or login on social media
-      var resolver = new Promise(function (resolve, reject) {
-        popup_resolver = function resolver(href) {
-          return resolve({});
-        };
-      });
-
-      popup = window.open(
-        SOCIAL_MEDIA_CONFIG[my_scm].supplant({
-          "url": window.encodeURIComponent(LOCATION.href),
-          "text":"",
-          "tag_list": "VoteVolt,CandidatureCitoyenne"
-        }),
-        is_mobile.matches ? BLANK : STR,
-        is_mobile.matches ? null : POPPER
-      );
-      popup.opener.popup_resolver = popup_resolver;
-      return window.promiseEventListener(popup, "load", true);
-    })
-
     .declareMethod("fetchTranslationAndUpdateDom", function (my_language) {
       var gadget = this;
       var dict = gadget.property_dict;
@@ -536,20 +501,7 @@
     })
 
     .declareMethod("openMail", function (my_target) {
-      var subject;
-      var body;
-      subject = window.encodeURIComponent(
-        CANDIDATURE + SPACE + my_target.candidate_first_name.value + SPACE + my_target.candidate_last_name.value.toUpperCase()
-      );
-      body = window.encodeURIComponent(
-        "Nom: " + my_target.candidate_last_name.value.toUpperCase() + BREAK +
-        "Prenom: " + my_target.candidate_first_name.value + BREAK +
-        "Age: " + my_target.candidate_age.value + BREAK +
-        "Code Postal: " + my_target.candidate_postal_code.value + BREAK +
-        "Candidate éligible: " + my_target.checkbox_candidate.value + BREAK +
-        "Validité: " + my_target.checkbox_validity.value
-      );
-      window.open('mailto:' + MAIL + '?subject=' + subject + '&body=' + body, '_blank');
+      window.open('https://forms.gle/6xhuNW8p5KCmCuDS6');
       return;
     })
 
@@ -619,12 +571,6 @@
       switch (event.target.getAttribute(NAME)) {
         case "volt-candidature":
           return this.openMail(event.target);
-        case "volt-share-facebook":
-          return this.shareUrl("facebook");
-        case "volt-share-twitter":
-          return this.shareUrl("twitter");
-        case "volt-share-linkedin":
-          return this.shareUrl("linkedin");
         case "volt-select-language":
           return this.updateStorage(event.target.volt_language.value);
       }
