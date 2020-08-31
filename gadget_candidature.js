@@ -88,7 +88,7 @@
   }
 
   function getVideoHash() {
-    return "xkP9gi_nQQ8";
+    return "XZLMwltAiGY";
   }
 
   KLASS
