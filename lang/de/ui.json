@@ -8,7 +8,7 @@
   "I want to be candidate": "Ich will kandidieren !",
   "Elections": "Bevorstehende Wahlen",
   "We are seeking": "Wir suchen Kandidaten für die folgenden Wahlen:",
-  "The map will be": "Die Karte wird laufend mit der Anzahl der Kandidaten aktualisiert.",
+  "The map will be": "Die Karte wird laufend mit der Anzahl der Kandidaten aktualisiert (Legende: Bewerbungen als Kandidat/Unterstützender Kandidat)",
   "You are interested to participate": "Sind Sie an einer Teilnahme in einer anderen Region oder einem anderen Departement interessiert? Wir suchen Referenten, die bereit sind, die Verantwortung für die Organisation einer Kampagne zu übernehmen. Setzen Sie sich bezüglich weiterer Einzelheiten mit uns in Verbindung:",
   "Current status": "Aktueller Status",  
   "What exactly is Volt": "Was ist Volt ?",
@@ -69,8 +69,8 @@
   "hosted by": "gehostet durch",
   "Icon inspired by": "Icons von",
   "from": "von",
-  
-
+  "More info on our process": "Weitere Informationen über unseren Policy Process",  
+  "Submit a policy proposal": "Einen Politikvorschlag für eine bevorstehende Wahl einreichen",
   
   "Yes of course ! Our programme": "Selbstverständlich! Unser Programm, genannt Amsterdam Deklaration wurde gemeinsam von Mitgliedern verfasst und auf der Generalversammlung in Amsterdam akzeptiert (daher der Name). Die Deklaration ist in drei Abschnitte unterteilt:",
   "Build a just and sustainable society": "1. Aufbau einer nachhaltigen und gerechten Gesellschaft",
