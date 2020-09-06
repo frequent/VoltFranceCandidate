@@ -8,7 +8,7 @@
   "I want to be candidate": "I want to be candidate!",
   "Elections": "Upcoming Elections",
   "We are seeking candidates": "We are seeking candidates for the following elections:",
-  "The map will be": "The map will be continuously updated with the number of candidates.",
+  "The map will be": "The map will be continuously updated with the number of candidates (legend: Applications for Candidates / Supporting Candidates)",
   "You are interested to participate": "Interested to participate in another region or departement? We're looking for referents willing to be responsible for organising a campaign. Get in touch with us regarding more details:",
   "Current status": "Current status",
   "What exactly is Volt": "What is Volt?",
@@ -69,7 +69,8 @@
   "hosted by": "hosted by",
   "Icon inspired by": "Icons inspired by",
   "from": "from",
-  
+  "More info on our process": "More information on our policy process",
+  "Submit a policy proposal": "Submit a policy proposal for an upcoming election",
 
   
   "Yes of course ! Our programme": "Yes of course! Our programme, called the Amsterdam Declaration was written collaboratively by our members and volunteers and has been adopted on our general assembly in Amsterdam (hence the name). The programme consists of three main axes:",

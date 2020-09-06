@@ -8,7 +8,7 @@
   "I want to be candidate": "Je souhaite être candidat !",
   "Elections": "Prochaines élections",
   "We are seeking candidates": "Nous recherchons des candidats pour les élections suivantes :",
-  "The map will be": "La carte sera continuellement mise à jour avec le nombre de candidats.",
+  "The map will be": "La carte sera continuellement mise à jour avec le nombre de candidats (légende : Candidatures / Candidatures de soutien).",
   "You are interested to participate": "Vous souhaitez participer dans une autre région ou un autre département ? Nous recherchons des référents prêts à se prendre en charge pour l'organisation d'une campagne. Contactez-nous pour plus de détails :",  
   "Current Status": "État actuel",
   "What exactly is Volt": "Volt, c'est quoi ?",
@@ -69,8 +69,8 @@
   "hosted by": "hébergé par",
   "Icon inspired by": "Icons inspirés par",
   "from": "de",
-  
-  
+  "More info on our process": "Plus d'informations sur notre processus politique",
+  "Submit a policy proposal": "Proposer une politique pour une des élection à venir",
   
   "Yes of course ! Our programme": "Oui ! Notre programme, la Déclaration d'Amsterdam, a été construit de façon collaborative par tous nos membres. Il été adopté lors de notre Assemblée Générale à Amsterdam et est construit autour de trois axes:",
   "Build a just and sustainable society": "1. Bâtir une société juste et responsable",
