@@ -1,0 +1,30 @@
+<svg width="1349.9999999999998" height="900" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect y="100.00107" id="svg_2" fill="#ffffff" height="100" width="1350" x="600"/>
+  <rect id="svg_3" fill="#ffffff" height="100" width="1350" y="300.00107" x="600"/>
+  <rect x="0" id="svg_4" fill="#ffffff" height="100" width="1350" y="500.00107"/>
+  <rect x="0" id="svg_5" fill="#ffffff" height="100" width="1350" y="700.00107"/>
+  <use fill="#ffffff" id="svg_7" y="-122.5" x="-225" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_8" y="-122.5" x="-75" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_9" y="-122.5" x="75" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_10" y="-122.5" x="225" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_11" x="-150" xlink:href="#ermine"/>
+  <g fill="#000" id="ermine">
+   <use fill="#ffffff" id="svg_12" transform="rotate(-90 300.00000000000006,149.50000000000003) " xlink:href="#s"/>
+   <path fill="#ffffff" d="m300,167.5l-9,-13.5l9,-22.5l9,22.5l-9,13.5z" id="s"/>
+   <use fill="#ffffff" id="svg_13" transform="rotate(90 300.00000000000006,149.50000000000003) " xlink:href="#s"/>
+   <path fill="#ffffff" id="svg_14" d="m300,167.5l40.5,99l-31.5,-13.5l-9,18l-9,-18l-31.5,13.5l40.5,-99z"/>
+  </g>
+  <use fill="#ffffff" id="svg_15" x="150" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_16" y="122.5" x="-225" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_17" y="122.5" x="-75" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_18" y="122.5" x="75" xlink:href="#ermine"/>
+  <use fill="#ffffff" id="svg_19" y="122.5" x="225" xlink:href="#ermine"/>
+ </g>
+</svg>
