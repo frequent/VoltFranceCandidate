@@ -424,7 +424,7 @@
       if (delta.hasOwnProperty("play")) {
         state.play = window.location.hash = delta.play || STR;
         if (state.play && state.play === getVideoHash()) {
-          promise_list.push(gadget.loadVideo(state.play));
+          //promise_list.push(gadget.loadVideo(state.play));
         } else {
           promise_list.push(gadget.resetFrube());
         }
@@ -516,7 +516,7 @@
         .push(function () {
           return RSVP.all([ 
             gadget.volt_create(getConfig(gadget.state.locale)),
-            gadget.tube_create({"type": "youtube", "api_key": dict.youtube_id}),
+            //gadget.tube_create({"type": "youtube", "api_key": dict.youtube_id}),
             gadget.stateChange({"online": window.navigator.onLine}),
             gadget.tataaaa()
           ]);
