@@ -252,7 +252,7 @@
         //  return gadget.handleError(error, {"404": {}});
         //})
         //.push(function (frube_response) {
-          var data = frube_response;
+        //  var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
           var item = dict.current_video = mergeDict(item_list[0], /*data*/ {});
@@ -393,7 +393,7 @@
         //  return gadget.handleError(error, {"404": {}});
         //})
         //.push(function (frube_response) {
-          var data = frube_response;
+        //  var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
           var item = dict.current_video = mergeDict(item_list[0], /* data */ {});
