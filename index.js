@@ -79,7 +79,7 @@
           p.textContent = "Sorry, we messed up or your browser does not seem to support this application :( ";
           a.classList.add("vote-error-link");
           a.textContent = "www.votefrance.eu";
-          a.setAttribute("href", "https://www.votefrance.eu/");
+          a.setAttribute("href", "https://www.voltfrance.org/");
           fragment.appendChild(p);
           fragment.appendChild(br);
           fragment.appendChild(a);
