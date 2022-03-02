@@ -88,7 +88,7 @@
   }
 
   function getVideoHash() {
-    return "XZLMwltAiGY";
+    return "KP7JZPrJvUY";
   }
 
   KLASS
@@ -501,7 +501,7 @@
     })
 
     .declareMethod("openMail", function (my_target) {
-      window.open('https://forms.gle/6xhuNW8p5KCmCuDS6');
+      window.open('https://forms.gle/XJFq5bDPidquE2ae8');
       return;
     })
 

@@ -1021,3 +1021,16 @@
     display: none;
   }
 }
+
+hr {
+    width: 50%;
+    margin: 0 auto;
+    background: #ffffff;
+}
+.volt-candidatures h3 {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+.volt-candidatures .volt-text-image {
+  padding-bottom: 1em;
+}
