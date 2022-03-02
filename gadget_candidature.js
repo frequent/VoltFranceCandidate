@@ -82,8 +82,8 @@
     return {
       "type": "volt_storage",
       "repo": "VoltFranceCandidate",
-      "path": "lang/" + my_language
-      //"__debug": "https://softinst103163.host.vifib.net/candid/lang/" + my_language + "/debug.json"
+      "path": "lang/" + my_language,
+      "__debug": "https://softinst103163.host.vifib.net/candid/lang/" + my_language + "/debug.json"
     };
   }
 
@@ -246,13 +246,13 @@
         })
         .push(function (tube_response) {
           tube_data = tube_response;
-          return gadget.frube_get(my_video_id);
-        })
-        .push(undefined, function (error) {
-          return gadget.handleError(error, {"404": {}});
-        })
-        .push(function (frube_response) {
-          var data = frube_response;
+        //  return gadget.frube_get(my_video_id);
+        //})
+        //.push(undefined, function (error) {
+        //  return gadget.handleError(error, {"404": {}});
+        //})
+        //.push(function (frube_response) {
+        //  var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
           var item = dict.current_video = mergeDict(item_list[0], /*data*/ {});
@@ -387,13 +387,13 @@
         })
         .push(function (tube_response) {
           tube_data = tube_response;
-          return gadget.frube_get(my_video_id);
-        })
-        .push(undefined, function (error) {
-          return gadget.handleError(error, {"404": {}});
-        })
-        .push(function (frube_response) {
-          var data = frube_response;
+        //  return gadget.frube_get(my_video_id);
+        //})
+        //.push(undefined, function (error) {
+        //  return gadget.handleError(error, {"404": {}});
+        //})
+        //.push(function (frube_response) {
+          //var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
           var item = dict.current_video = mergeDict(item_list[0], /* data */ {});
