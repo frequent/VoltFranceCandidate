@@ -246,12 +246,12 @@
         })
         .push(function (tube_response) {
           tube_data = tube_response;
-          return gadget.frube_get(my_video_id);
-        })
-        .push(undefined, function (error) {
-          return gadget.handleError(error, {"404": {}});
-        })
-        .push(function (frube_response) {
+          //return gadget.frube_get(my_video_id);
+        //})
+        //.push(undefined, function (error) {
+        //  return gadget.handleError(error, {"404": {}});
+        //})
+        //.push(function (frube_response) {
           var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
@@ -387,12 +387,12 @@
         })
         .push(function (tube_response) {
           tube_data = tube_response;
-          return gadget.frube_get(my_video_id);
-        })
-        .push(undefined, function (error) {
-          return gadget.handleError(error, {"404": {}});
-        })
-        .push(function (frube_response) {
+          //return gadget.frube_get(my_video_id);
+        //})
+        //.push(undefined, function (error) {
+        //  return gadget.handleError(error, {"404": {}});
+        //})
+        //.push(function (frube_response) {
           var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
