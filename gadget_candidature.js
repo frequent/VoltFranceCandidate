@@ -88,7 +88,7 @@
   }
 
   function getVideoHash() {
-    return "KP7JZPrJvUY";
+    return "aGCqcHZ73eo";
   }
 
   KLASS
@@ -246,13 +246,13 @@
         })
         .push(function (tube_response) {
           tube_data = tube_response;
-        //  return gadget.frube_get(my_video_id);
-        //})
-        //.push(undefined, function (error) {
-        //  return gadget.handleError(error, {"404": {}});
-        //})
-        //.push(function (frube_response) {
-        //  var data = frube_response;
+          return gadget.frube_get(my_video_id);
+        })
+        .push(undefined, function (error) {
+          return gadget.handleError(error, {"404": {}});
+        })
+        .push(function (frube_response) {
+          var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
           var item = dict.current_video = mergeDict(item_list[0], /*data*/ {});
@@ -387,13 +387,13 @@
         })
         .push(function (tube_response) {
           tube_data = tube_response;
-        //  return gadget.frube_get(my_video_id);
-        //})
-        //.push(undefined, function (error) {
-        //  return gadget.handleError(error, {"404": {}});
-        //})
-        //.push(function (frube_response) {
-          //var data = frube_response;
+          return gadget.frube_get(my_video_id);
+        })
+        .push(undefined, function (error) {
+          return gadget.handleError(error, {"404": {}});
+        })
+        .push(function (frube_response) {
+          var data = frube_response;
           var state = gadget.state;
           var item_list = tube_data.items || [{}];
           var item = dict.current_video = mergeDict(item_list[0], /* data */ {});
@@ -424,7 +424,7 @@
       if (delta.hasOwnProperty("play")) {
         state.play = window.location.hash = delta.play || STR;
         if (state.play && state.play === getVideoHash()) {
-          //promise_list.push(gadget.loadVideo(state.play));
+          promise_list.push(gadget.loadVideo(state.play));
         } else {
           promise_list.push(gadget.resetFrube());
         }
@@ -516,7 +516,7 @@
         .push(function () {
           return RSVP.all([ 
             gadget.volt_create(getConfig(gadget.state.locale)),
-            //gadget.tube_create({"type": "youtube", "api_key": dict.youtube_id}),
+            gadget.tube_create({"type": "youtube", "api_key": dict.youtube_id}),
             gadget.stateChange({"online": window.navigator.onLine}),
             gadget.tataaaa()
           ]);
